@@ -9,7 +9,13 @@ class WeatherPage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("This is a div, bruv")],
+          children: [
+// city name
+
+// temp reading
+
+// humidity, chance of rain
+          ],
         ),
       ),
     );
