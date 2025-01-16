@@ -9,4 +9,6 @@ class Reading {
       required this.temperature,
       required this.humidity,
       required this.chanceRain});
+
+// method to recieve the data & extract only data I need
 }
