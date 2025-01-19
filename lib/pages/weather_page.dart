@@ -27,6 +27,8 @@ class _WeatherPageState extends State<WeatherPage> {
             latitude = latitudeValue;
             longitude = longitudeValue;
           });
+          print(
+              "latitude reads $latitudeValue, and longitude reads $longitudeValue");
         }
 
         if (latitudeValue < 0 || longitudeValue < 0) {
@@ -38,7 +40,7 @@ class _WeatherPageState extends State<WeatherPage> {
 
       final weatherService = FetchWeather(latitude, longitude);
       final weatherData = await weatherService.getWeatherData();
-      // print(weatherData);
+      print(weatherData);
 
       setState(() {
         temp_value = weatherData.temperature ?? 9.0;

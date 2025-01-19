@@ -16,6 +16,6 @@ class GetLocation {
     double longitudeValue = position.longitude;
     double latitudeValue = position.latitude;
 
-    return {"latitude": longitudeValue, "longitude": latitudeValue};
+    return {"latitude": latitudeValue, "longitude": longitudeValue};
   }
 }
