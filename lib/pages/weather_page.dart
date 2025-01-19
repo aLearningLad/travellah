@@ -9,12 +9,21 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
+  double temp_value = 0;
+
   @override
   Widget build(BuildContext context) {
-    void fetchWeatherExample() async {
+// get location values, pass them to getWeatherData's base url
+// use flutter's equivalent of useEffect hook
+
+    void fetchWeather() async {
       final weatherService = FetchWeather();
       final weatherData = await weatherService.getWeatherData();
-      print(weatherData);
+      // print(weatherData);
+
+      setState(() {
+        temp_value = weatherData.temperature ?? 9.0;
+      });
     }
 
     return Scaffold(
@@ -24,7 +33,10 @@ class _WeatherPageState extends State<WeatherPage> {
           children: [
 // test button
             ElevatedButton(
-                onPressed: fetchWeatherExample, child: Text("Click to fetch")),
+                onPressed: fetchWeather, child: Text("Click to fetch!")),
+
+// dummy display to delete later
+            Text("$temp_value deg celcius!")
 
 // city name
 

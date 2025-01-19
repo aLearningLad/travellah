@@ -1,26 +1,13 @@
 class WeatherReading {
-  final String cityName;
-  final String temperature;
-  final String humidity;
-  final String chanceRain;
-  final String cloudCover;
+  final double temperature;
 
-  WeatherReading({
-    required this.cityName,
-    required this.temperature,
-    required this.humidity,
-    required this.chanceRain,
-    required this.cloudCover,
-  });
+  WeatherReading({required this.temperature});
 
 // method to recieve the data & extract only data I need
-  // factory WeatherReading.fromJson(Map<String, dynamic> jsonData) {
-  //   return WeatherReading(
-  //     cityName: cityName,
-  //     temperature: temperature,
-  //     humidity: ['values'],
-  //     chanceRain: chanceRain,
-  //     cloudCover:
-  //   );
-  // }
+  factory WeatherReading.fromJson(Map<String, dynamic> jsonData) {
+    return WeatherReading(
+        // cityName: cityName,
+        temperature: jsonData['timelines']['minutely'][0]['values']
+            ['temperature']);
+  }
 }
