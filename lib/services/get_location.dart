@@ -2,7 +2,7 @@ import 'package:geolocator/geolocator.dart';
 
 class GetLocation {
   // 1. will return name of location (string)
-  Future<Set<double>> getCurrentCity() async {
+  Future<Map<String, double>> getCurrentCity() async {
     // get location permission from device
     LocationPermission permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
@@ -13,6 +13,9 @@ class GetLocation {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
 
-    return {position.longitude, position.latitude};
+    double longitudeValue = position.longitude;
+    double latitudeValue = position.latitude;
+
+    return {"latitude": longitudeValue, "longitude": latitudeValue};
   }
 }

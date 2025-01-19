@@ -4,12 +4,18 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import "package:travellaaah/models/reading.dart";
 
 class FetchWeather {
+  final double longitudeValue;
+  final double latitudeValue;
+
+// constructor to recieve & use coordinate values
+  FetchWeather(this.latitudeValue, this.longitudeValue);
+
 // call my api key from env
   final String _apiKey = dotenv.env['WEATHER_API_KEY'] ?? '';
 
 // connection string
   String get weatherUrl =>
-      'https://api.tomorrow.io/v4/weather/forecast?location=42.3478,-71.0466&apikey=$_apiKey';
+      'https://api.tomorrow.io/v4/weather/forecast?location=$latitudeValue,$longitudeValue&apikey=$_apiKey';
 
   Future<WeatherReading> getWeatherData() async {
     try {

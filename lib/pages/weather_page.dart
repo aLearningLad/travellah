@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travellaaah/services/fetch_weather.dart';
+import 'package:travellaaah/services/get_location.dart';
 
 class WeatherPage extends StatefulWidget {
   const WeatherPage({super.key});
@@ -10,11 +11,32 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   double temp_value = 0;
+  double latitude = 0;
+  double longitude = 0;
 
   @override
   Widget build(BuildContext context) {
     void fetchWeather() async {
-      final weatherService = FetchWeather();
+      final location = await GetLocation().getCurrentCity();
+      try {
+        double latitudeValue = location['latitude']!;
+        double longitudeValue = location['longitude']!;
+
+        if (longitudeValue != 0 && latitudeValue != 0) {
+          setState(() {
+            latitude = latitudeValue;
+            longitude = longitudeValue;
+          });
+        }
+
+        if (latitudeValue < 0 || longitudeValue < 0) {
+          throw Exception("coordinates not loaded");
+        }
+      } catch (e) {
+        print(e);
+      }
+
+      final weatherService = FetchWeather(latitude, longitude);
       final weatherData = await weatherService.getWeatherData();
       // print(weatherData);
 
