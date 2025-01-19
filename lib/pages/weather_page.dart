@@ -13,9 +13,6 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
-// get location values, pass them to getWeatherData's base url
-// use flutter's equivalent of useEffect hook
-
     void fetchWeather() async {
       final weatherService = FetchWeather();
       final weatherData = await weatherService.getWeatherData();
