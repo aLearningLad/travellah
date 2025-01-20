@@ -50,16 +50,20 @@ class _WeatherPageState extends State<WeatherPage> {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
 // test button
-            ElevatedButton(
-                onPressed: fetchWeather, child: Text("Click to fetch!")),
+            // ElevatedButton(
+            //     onPressed: fetchWeather, child: Text("Click to fetch!")),
 
 // dummy display to delete later
-            Text("$temp_value deg celcius!")
+            // Text("$temp_value deg celcius!")
 
-// city name
+// city name --> get it from location
+            Text(
+              "Kraaifontein",
+              style: TextStyle(color: Colors.white),
+            )
 
 // temp reading
 
