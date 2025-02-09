@@ -16,6 +16,7 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
+    // fetch weather data
     void fetchWeather() async {
       final location = await GetLocation().getCurrentCity();
       try {
@@ -48,26 +49,41 @@ class _WeatherPageState extends State<WeatherPage> {
     }
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+      appBar: AppBar(
+        title: Text("Weather app"),
+        actions: [
+          Builder(builder: (context) {
+            return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: Icon(Icons.menu_book_rounded));
+          })
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: Text(
+            "This is text that sits dead-smack in the middle of the screen!",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
           children: [
-// test button
-            // ElevatedButton(
-            //     onPressed: fetchWeather, child: Text("Click to fetch!")),
-
-// dummy display to delete later
-            // Text("$temp_value deg celcius!")
-
-// city name --> get it from location
-            Text(
-              "Kraaifontein",
-              style: TextStyle(color: Colors.white),
+            const DrawerHeader(
+                child: Text(
+              "Hi there!",
+              style: TextStyle(color: Colors.black),
+            )),
+            ListTile(
+              title: Text(
+                "Tap me!",
+                style: TextStyle(color: Colors.black),
+              ),
             )
-
-// temp reading
-
-// humidity, chance of rain
           ],
         ),
       ),

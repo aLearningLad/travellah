@@ -4,8 +4,8 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import "package:travellaaah/models/reading.dart";
 
 class FetchWeather {
-  final double longitudeValue;
-  final double latitudeValue;
+  final double longitudeValue; // value recieved as arg
+  final double latitudeValue; // value recieved as arg
 
 // constructor to recieve & use coordinate values
   FetchWeather(this.latitudeValue, this.longitudeValue);
