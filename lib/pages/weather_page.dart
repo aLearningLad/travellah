@@ -50,25 +50,33 @@ class _WeatherPageState extends State<WeatherPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Weather app"),
+        // title: Text("Weather app"),
+        automaticallyImplyLeading: false,
         actions: [
           Builder(builder: (context) {
             return IconButton(
                 onPressed: () {
                   Scaffold.of(context).openDrawer();
                 },
-                icon: Icon(Icons.menu_book_rounded));
-          })
+                icon: Icon(Icons.dashboard_customize_rounded));
+          }),
+          FilledButton(
+            onPressed: () {
+              print("Settings button clicked");
+            },
+            style: FilledButton.styleFrom(backgroundColor: Colors.transparent),
+            child: Icon(Icons.menu, color: Colors.black),
+          )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child: Text(
-            "This is text that sits dead-smack in the middle of the screen!",
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
+      body: ListView(
+        children: [
+// location name
+
+// current temp value, heading ('sunny', 'overcast' ect), date, max & min ===> all like in phone weather app
+
+// 15 day forecast with readings, images etc. ===> check if API allows this for free
+        ],
       ),
       drawer: Drawer(
         child: ListView(
